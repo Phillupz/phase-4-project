@@ -10,15 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_18_004233) do
+ActiveRecord::Schema.define(version: 2022_06_18_171033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "app_data", force: :cascade do |t|
+    t.string "image"
+    t.string "title"
+    t.text "text"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "calendar_events", force: :cascade do |t|
     t.string "name"
-    t.datetime "start"
-    t.datetime "end"
+    t.string "start"
+    t.string "end"
     t.boolean "all_day"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
@@ -34,8 +42,8 @@ ActiveRecord::Schema.define(version: 2022_06_18_004233) do
 
   create_table "notes", force: :cascade do |t|
     t.string "name"
-    t.string "text"
-    t.string "notebook_id"
+    t.text "text"
+    t.integer "notebook_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -51,7 +59,7 @@ ActiveRecord::Schema.define(version: 2022_06_18_004233) do
     t.string "description"
     t.boolean "checked"
     t.boolean "priority"
-    t.string "task_list_id"
+    t.integer "task_list_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -61,7 +69,7 @@ ActiveRecord::Schema.define(version: 2022_06_18_004233) do
     t.string "last_name"
     t.string "email"
     t.string "username"
-    t.string "password"
+    t.string "password_digest"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

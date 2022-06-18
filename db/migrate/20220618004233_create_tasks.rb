@@ -4,7 +4,7 @@ class CreateTasks < ActiveRecord::Migration[6.1]
       t.string :description
       t.boolean :checked
       t.boolean :priority
-      t.string :task_list_id
+      t.integer :task_list_id
 
       t.timestamps
     end

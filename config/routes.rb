@@ -5,14 +5,15 @@ Rails.application.routes.draw do
   namespace :api do
     resources :app_data, only: [:index, :create]
     post "/signup", to: "users#create"
+    get "/dashboard", to: "users#dashboard"
     get "/me", to: "users#show"
-    get "/", to: "users#show"
+    get "/", to: "users#index"
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
   end
   resources :users, only: [:show, :create] do
     resources :tasks, only: [:index]
-    resources :notes, only: [:index]
+    resources :notes, only: [:index, :show]
     resources :notebooks, only: [:index]
     resources :task_lists, only: [:index]
     resources :calendar_events, only: [:index]

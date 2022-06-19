@@ -12,7 +12,16 @@ class UsersController < ApplicationController
 
   def create
     user = User.create(user_params)
-    render json: user, status: :created
+    if user.valid?
+      render json: user, status: :created
+    else
+      render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
+    end
+  end
+
+  def dashboard
+    user = User.find_by(id: session[:user_id])
+    render json: user, status: :ok
   end
 
   private

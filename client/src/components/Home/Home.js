@@ -5,7 +5,8 @@ import Header from './Header.js'
 import Body from './Body.js'
 
 const HomeCont = styled.div`
-  background-color: grey;
+  width: 100%;
+  height: 1400px;
 `
 
 function Home() {

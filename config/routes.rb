@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :app_data, only: [:index, :create]
     post "/signup", to: "users#create"
-    get "/dashboard", to: "users#dashboard"
+    get "/my/:id", to: "users#dashboard"
     get "/me", to: "users#show"
     get "/", to: "users#index"
     post "/login", to: "sessions#create"
